@@ -1,0 +1,10 @@
+.table{
+    width: 85%;
+    margin: 0 auto;
+}
+.FormInputbseDiv{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
