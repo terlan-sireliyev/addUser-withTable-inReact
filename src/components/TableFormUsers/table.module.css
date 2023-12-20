@@ -8,3 +8,14 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 }
+.FormInputbseDiv input {
+    width: 311px!important;
+}
+@media screen and (max-width: 500px) {
+    .FormInputbseDiv input {
+        width: 350px!important;
+    }
+    .FormInputbseDiv button {
+        width: 350px!important;
+    }
+}
