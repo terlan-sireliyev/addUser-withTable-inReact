@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-// import 'bootstrap/dist/css/bootstrap.css'
 import styleTable from './table.module.css'
 var uniqid = require('uniqid')
-// import { tablem, tHead,tbody } from "react-bootstrap";
 export default function FormUser() {
     const [list, setList] = useState([]);
     const [editTodo, setEditTodo] = useState([]);
