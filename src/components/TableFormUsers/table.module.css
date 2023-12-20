@@ -13,9 +13,9 @@ align-items: center;
 }
 @media screen and (max-width: 500px) {
     .FormInputbseDiv input {
-        width: 350px!important;
+        width: 330px!important;
     }
     .FormInputbseDiv button {
-        width: 350px!important;
+        width: 330px!important;
     }
 }
