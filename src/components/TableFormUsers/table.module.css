@@ -19,3 +19,12 @@ align-items: center;
         width: 330px!important;
     }
 }
+
+@media screen and (max-width: 380px) {
+    .FormInputbseDiv input {
+        width: 300px!important;
+    }
+    .FormInputbseDiv button {
+        width: 300px!important;
+    }
+}
