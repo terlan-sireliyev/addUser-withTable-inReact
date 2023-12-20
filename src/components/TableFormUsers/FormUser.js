@@ -13,7 +13,7 @@ export default function FormUser() {
         const phone = e.target.elements.phone.value
 
         const newList = {
-            id: uniqid(),name, age, position, phone
+            id: uniqid(), name, age, position, phone
         }
         if (name === '' || age === '' || position === '' || phone === '') {
             alert('Inputlar bos ola bilmez')
@@ -23,10 +23,10 @@ export default function FormUser() {
             })
             setEditTodo([...editTodo, newList])
         }
-         e.target.elements.name.value = ""
-         e.target.elements.age.value = ""
-         e.target.elements.position.value = ""
-         e.target.elements.phone.value = ""
+        e.target.elements.name.value = ""
+        e.target.elements.age.value = ""
+        e.target.elements.position.value = ""
+        e.target.elements.phone.value = ""
     }
 
     const deleteTab = (id) => {
@@ -38,34 +38,28 @@ export default function FormUser() {
     }
 
     const editTab = (id) => {
-       const EditTab = list.filter((itemEdit) => {
+        const EditTab = list.filter((itemEdit) => {
             return itemEdit.id === id
         })
         setEditTodo(...EditTab)
     }
- 
-
-
     return (
-
         <div>
             <div className={styleTable.table}>
                 <form onSubmit={handleSubmit}>
                     <div className={styleTable.FormInputbseDiv}>
-                        <input value={editTodo.name}  onChange={(e)=> setEditTodo(e.target.value)}  name='name' className={`mt-4 w-25  form-control`} type="text" placeholder='FullName' />
-                        <input value={editTodo.age}  onChange={(e)=> setEditTodo(e.target.value)}  name='age' className={`mt-4 w-25  form-control`} type="text" placeholder='age' />
-                        <input value={editTodo.position} onChange={(e)=> setEditTodo(e.target.value)} name='position' className={`mt-4 w-25  form-control`} type="text" placeholder='Position' />
-                        <input value={editTodo.phone}  onChange={(e)=> setEditTodo(e.target.value)} name='phone' className={`mt-4 w-25  form-control`} type="text" placeholder='Phone' />
-                        
+                        <input value={editTodo.name} onChange={(e) => setEditTodo(e.target.value)} name='name' className={`mt-4 w-25  form-control`} type="text" placeholder='FullName' />
+                        <input value={editTodo.age} onChange={(e) => setEditTodo(e.target.value)} name='age' className={`mt-4 w-25  form-control`} type="text" placeholder='age' />
+                        <input value={editTodo.position} onChange={(e) => setEditTodo(e.target.value)} name='position' className={`mt-4 w-25  form-control`} type="text" placeholder='Position' />
+                        <input value={editTodo.phone} onChange={(e) => setEditTodo(e.target.value)} name='phone' className={`mt-4 w-25  form-control`} type="text" placeholder='Phone' />
                         <button class='btn btn-primary w-25 mt-4'>Add</button>
-
                     </div>
                 </form>
                 <div className={`bg-warning text-dark p-1 w-100 mt-4 rounded`}>
                     <span>Sizin bu cedvelin icinde: <span className={`text-danger`}> {list.length} </span> istifadeceniz var</span>
                 </div>
                 <table className={`table table-hover table-bordered mt-1`}>
-                <thead class="thead-dark">
+                    <thead class="thead-dark">
                         <tr>
                             <th scope="col">FullName</th>
                             <th scope="col">Age</th>
@@ -93,9 +87,7 @@ export default function FormUser() {
                             ))
                         }
                     </tbody>
-            
                 </table>
-                    <input type="text" value={editTodo.name} />
             </div>
         </div>
     )
