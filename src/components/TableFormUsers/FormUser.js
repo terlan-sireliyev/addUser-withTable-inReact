@@ -1,16 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import styleTable from './table.module.css'
 var uniqid = require('uniqid')
 export default function FormUser() {
     const [list, setList] = useState([]);
-    const [editTodo, setEditTodo] = useState([]);
+    const [value, setValue] = useState('');
+    const [showUpdate, setShowUpdate] = useState(false);
 
-    const handleSubmit = (e) => {
+    const addUser = (e) => {
         e.preventDefault();
-
-
-       
-
         const name = e.target.elements.name.value
         const age = e.target.elements.age.value
         const position = e.target.elements.position.value
@@ -20,27 +17,13 @@ export default function FormUser() {
             id: uniqid(), name, age, position, phone
         }
 
-         // if (editTodo) {
-        //     const editTodoLists = list.find((i) => i.id === editTodo);
-        //     const updateTodos = list.map((t) =>
-        //         t.id === editTodoLists.id
-        //     );
-        //     setList(updateTodos);
-        //     setEditTodo(0);
-        //     return;
-        // }
-
-       
-
-
-
         if (name === '' || age === '' || position === '' || phone === '') {
             alert('Inputlar bos ola bilmez')
         } else {
             setList((itemList) => {
                 return itemList.concat(newList)
             })
-            setEditTodo([...editTodo, newList])
+            setValue([...value, newList])
         }
         e.target.elements.name.value = ""
         e.target.elements.age.value = ""
@@ -50,7 +33,6 @@ export default function FormUser() {
 
     const deleteTab = (id) => {
         const delTab = list.filter((itemFil) => {
-            console.log(itemFil.id + ": " + id)
             return itemFil.id !== id
         })
         setList([...delTab])
@@ -60,25 +42,36 @@ export default function FormUser() {
         const EditTab = list.filter((itemEdit) => {
             return itemEdit.id === id
         })
-        setEditTodo(...EditTab)
+        setValue(...EditTab)
+        setShowUpdate(!showUpdate)
+    }
+    const saveTodo = (e) => {
+        e.preventDefault();
+        console.log('Hello')
     }
     return (
         <div>
             <div className={styleTable.table}>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={addUser}>
                     <div className={styleTable.FormInputbseDiv}>
-                        <input value={editTodo.name} onChange={(e) => setEditTodo(e.target.value)} name='name' className={`mt-4  form-control `} type="text" placeholder='FullName' />
-                        <input value={editTodo.age} onChange={(e) => setEditTodo(e.target.value)} name='age' className={`mt-4  form-control`} type="text" placeholder='age' />
-                        <input value={editTodo.position} onChange={(e) => setEditTodo(e.target.value)} name='position' className={`mt-4  form-control`} type="text" placeholder='Position' />
-                        <input value={editTodo.phone} onChange={(e) => setEditTodo(e.target.value)} name='phone' className={`mt-4  form-control`} type="text" placeholder='Phone' />
-                        <button class='btn btn-primary w-25 mt-4'>Add</button>
+                        <input value={value.name} onChange={(e) => setValue(e.target.value)} name='name' className={`mt-4  form-control `} type="text" placeholder='FullName' />
+                        <input value={value.age} onChange={(e) => setValue(e.target.value)} name='age' className={`mt-4  form-control`} type="text" placeholder='age' />
+                        <input value={value.position} onChange={(e) => setValue(e.target.value)} name='position' className={`mt-4  form-control`} type="text" placeholder='Position' />
+                        <input value={value.phone} onChange={(e) => setValue(e.target.value)} name='phone' className={`mt-4  form-control`} type="text" placeholder='Phone' />
+                        <div className={styleTable.btnsBase}>
+                            {
+                                showUpdate ?
+                                    <button onClick={saveTodo} className={`${'btn btn-warning w-50 mt-4'} ${styleTable.btnsbtn}`}>Update</button> :
+                                    <button className={`${'btn btn-primary w-50 mt-4'} ${styleTable.btnsbtn}`}>Add</button>
+                            }
+                        </div>
                     </div>
                 </form>
-                <div className={`bg-warning text-dark p-1 w-100 mt-4 rounded`}>
+                <div className={`${'bg-warning text-dark p-1 w-100  rounded'} ${styleTable.textCount}`}>
                     <span>Sizin bu cedvelin icinde: <span className={`text-danger`}> {list.length} </span> istifadeceniz var</span>
                 </div>
-                <table className={`table table-hover table-bordered mt-1`}>
-                    <thead class="thead-dark">
+                <table className={`${'table table-hover table-bordered mt-1'} ${styleTable.tableHeader}`}>
+                    <thead className="thead-dark">
                         <tr>
                             <th scope="col">FullName</th>
                             <th scope="col">Age</th>

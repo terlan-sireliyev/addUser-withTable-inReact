@@ -1,30 +1,57 @@
-.table{
+.table {
     width: 85%;
     margin: 0 auto;
+
 }
-.FormInputbseDiv{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+
+.FormInputbseDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
+
+.tableHeader {
+    margin-top: 10px !important;
+}
+
+.textCount {
+    margin-top: 80px;
+}
+
+.btnsBase {
+    display: flex;
+    justify-content: center;
+}
+
+.btnsbtn {
+    position: absolute;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+}
+
 .FormInputbseDiv input {
-    width: 311px!important;
+    width: 311px !important;
 }
+
 @media screen and (max-width: 500px) {
     .FormInputbseDiv input {
-        width: 330px!important;
+        width: 330px !important;
     }
+
     .FormInputbseDiv button {
-        width: 330px!important;
+        width: 330px !important;
     }
 }
 
 @media screen and (max-width: 380px) {
     .FormInputbseDiv input {
-        width: 300px!important;
+        width: 300px !important;
     }
+
     .FormInputbseDiv button {
-        width: 300px!important;
+        width: 300px !important;
     }
 }
